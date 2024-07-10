@@ -7,7 +7,7 @@ variable "keyA" {
 }
 
 locals {
-  keyA = var.keyA != "" ? var.keyA : (lookup(env, "keyA", ""))
+  keyA = var.keyA != "" ? var.keyA : (terraform.workspace != "default" ? "default_value" : "default_value")
 }
 
 resource "null_resource" "get_keyA" {
