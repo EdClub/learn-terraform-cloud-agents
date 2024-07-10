@@ -1,3 +1,22 @@
+variable "pm_api_url" {
+  description = "The API URL for the Proxmox provider"
+  type        = string
+  sensitive   = true
+}
+
+variable "pm_api_token_id" {
+  description = "The API token ID for the Proxmox provider"
+  type        = string
+  sensitive   = true
+}
+
+variable "pm_api_token_secret" {
+  description = "The API token secret for the Proxmox provider"
+  type        = string
+  sensitive   = true
+}
+
+
 provider "null" {}
 
 variable "keyA" {
