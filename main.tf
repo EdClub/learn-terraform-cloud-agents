@@ -11,7 +11,7 @@ variable "pm_api_token_id" {
 variable "pm_api_token_secret" {
   description = "The API token secret for the Proxmox provider"
   type        = string
-  sensitive   = true
+  sensitive   = false
 }
 
 provider "null" {}
@@ -34,6 +34,6 @@ output "pm_api_token_id_value" {
 
 output "pm_api_token_secret_value" {
   value     = var.pm_api_token_secret
-  sensitive = true
+  sensitive = false
 }
 
