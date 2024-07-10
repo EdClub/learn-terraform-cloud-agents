@@ -16,18 +16,26 @@ variable "pm_api_token_secret" {
   sensitive   = true
 }
 
-
 provider "null" {}
 
-
-
-
-resource "null_resource" "pm_api_url" {
+resource "null_resource" "print_pm_api_url" {
   provisioner "local-exec" {
-    command = "echo ${pm_api_url}"
+    command = "echo ${var.pm_api_url}"
   }
 }
 
-output "keyA_value" {
-  value = local.pm_api_url
+output "pm_api_url_value" {
+  value     = var.pm_api_url
+  sensitive = false
 }
+
+output "pm_api_token_id_value" {
+  value     = var.pm_api_token_id
+  sensitive = true
+}
+
+output "pm_api_token_secret_value" {
+  value     = var.pm_api_token_secret
+  sensitive = true
+}
+
