@@ -19,22 +19,15 @@ variable "pm_api_token_secret" {
 
 provider "null" {}
 
-variable "keyA" {
-  description = "The environment variable keyA"
-  type        = string
-  default     = ""
-}
 
-locals {
-  keyA = var.keyA != "" ? var.keyA : (terraform.workspace != "default" ? "default_value" : "default_value")
-}
 
-resource "null_resource" "get_keyA" {
+
+resource "null_resource" "pm_api_url" {
   provisioner "local-exec" {
-    command = "echo ${local.keyA}"
+    command = "echo ${pm_api_url}"
   }
 }
 
 output "keyA_value" {
-  value = local.keyA
+  value = local.pm_api_url
 }
