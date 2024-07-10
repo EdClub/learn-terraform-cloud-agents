@@ -1,26 +1,20 @@
 # Copyright (c) HashiCorp, Inc.
 # SPDX-License-Identifier: MPL-2.0
 
-terraform {
-  required_providers {
-    docker = {
-      source = "kreuzwerker/docker"
-    }
+provider "null" {}
+
+resource "null_resource" "get_keyA" {
+  provisioner "local-exec" {
+    command = "echo ${var.keyA}"
   }
 }
 
-provider "docker" {}
-
-resource "docker_image" "nginx" {
-  name         = "nginx:latest"
-  keep_locally = false
+variable "keyA" {
+  description = "The environment variable keyA"
+  type        = string
 }
 
-resource "docker_container" "nginx" {
-  image = docker_image.nginx.name
-  name  = "nginx"
-  ports {
-    internal = 80
-    external = 8000
-  }
+output "keyA_value" {
+  value = var.keyA
 }
+
